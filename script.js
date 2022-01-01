@@ -143,7 +143,7 @@ const countTimer = function(){
       time --;
     };
 
-      let time = 10;
+      let time = 300;
       tick();
       const timer = setInterval(tick,1000);
     
@@ -167,9 +167,6 @@ const updateUI = function(account){
 // implementing login and handle events.
 let currentUser, timer ;
 
-currentUser = account1;
-containerApp.style.opacity = 100;
-updateUI(currentUser);
 
 btnLogin.addEventListener('click',function(e){
   e.preventDefault();
@@ -210,6 +207,10 @@ btnTransfer.addEventListener('click',function(e){
 
           updateUI(currentUser);
           console.log(currentUser);
+
+          // timer
+          if(timer) clearInterval(timer);
+          timer = countTimer();
     };
 });
 
@@ -238,6 +239,10 @@ btnLoan.addEventListener('click',function(e){
 
     // update UI
     updateUI(currentUser);
+  
+    // timer
+    if(timer) clearInterval(timer);
+    timer = countTimer();
   }
 });
 
